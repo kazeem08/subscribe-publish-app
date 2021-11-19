@@ -5,7 +5,8 @@ import { CreateSubscriberDto } from './dto/create-subscriber.dto';
 export class SubscriberService {
   private readonly logger = new Logger(SubscriberService.name);
 
-  displayBroadcast(payload: CreateSubscriberDto, resource: string) {
+  // Display/Output broadcast message
+  processBroadcast(payload: CreateSubscriberDto, resource: string) {
     this.logger.log(
       `Broadcast received for ${resource}: ${JSON.stringify(payload)}`,
     );
