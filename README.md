@@ -75,6 +75,6 @@ The command below starts the two applications listening on port 8000 and 9000
 ## Test
 
 ```bash
-# run all tests with Mocha
-npm test
+#cd into individual app and run the command below 
+npm run test
 ```
