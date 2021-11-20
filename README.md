@@ -63,6 +63,7 @@ rm -rf .git
 #### Install dependencies:
 
 ```bash
+#cd into individual app and run the command below 
 npm install
 ```
 
