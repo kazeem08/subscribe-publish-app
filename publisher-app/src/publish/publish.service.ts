@@ -22,7 +22,7 @@ export class PublishService {
     }
 
     if (publishArray.length) {
-      await Promise.all(publishArray);
+      await Promise.allSettled(publishArray);
     }
 
     return {};
