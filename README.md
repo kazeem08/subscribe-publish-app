@@ -63,7 +63,7 @@ rm -rf .git
 #### Install dependencies:
 
 ```bash
-npm install
+./dependencies.sh
 ```
 
 #### Set environment variables:
