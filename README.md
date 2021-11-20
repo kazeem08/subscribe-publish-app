@@ -49,8 +49,8 @@ This consist of two servers:
 #### Clone the repo and make it yours:
 
 ```bash
-git clone https://github.com/kazeem08/strv-addressbook-jimoh-kazeem.git
-cd strv-addressbook-jimoh-kazeem
+git clone https://github.com/kazeem08/subscribe-publish-app.git
+cd subscribe-publish-app
 rm -rf .git
 ```
 
