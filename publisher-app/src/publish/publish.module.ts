@@ -4,6 +4,6 @@ import { PublishController } from './publish.controller';
 
 @Module({
   controllers: [PublishController],
-  providers: [PublishService]
+  providers: [PublishService],
 })
 export class PublishModule {}

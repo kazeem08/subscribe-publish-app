@@ -1,26 +1,39 @@
-import { Injectable } from '@nestjs/common';
-import { CreateSubscriberDto } from './dto/create-subscriber.dto';
-import { UpdateSubscriberDto } from './dto/update-subscriber.dto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { CreateSusbcriberDto } from './dto/create-subscriber.dto';
+import { Subscriber, SubscriberDocument } from './schema/subscriber.schema';
 
 @Injectable()
 export class SubscriberService {
-  create(createSubscriberDto: CreateSubscriberDto) {
-    return 'This action adds a new subscriber';
+  constructor(
+    @InjectModel(Subscriber.name)
+    private model: Model<SubscriberDocument>,
+  ) {}
+
+  async create(
+    createSusbcribeDto: CreateSusbcriberDto,
+    topic: string,
+  ): Promise<SubscriberDocument> {
+    // check if subscriber is alread subscribed to the topic
+    const isSubscribed = await this.getActiveSubscriber(
+      createSusbcribeDto.url,
+      topic,
+    );
+
+    if (isSubscribed) {
+      throw new HttpException(
+        'subscriber is already active',
+        HttpStatus.CONFLICT,
+      );
+    }
+
+    // create subscriber
+    return this.model.create({ ...createSusbcribeDto, topic });
   }
 
-  findAll() {
-    return `This action returns all subscriber`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} subscriber`;
-  }
-
-  update(id: number, updateSubscriberDto: UpdateSubscriberDto) {
-    return `This action updates a #${id} subscriber`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} subscriber`;
+  // get active subscriber
+  getActiveSubscriber(url: string, topic: string) {
+    return this.model.findOne({ url, topic });
   }
 }
