@@ -6,7 +6,14 @@ describe('PublishService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PublishService],
+      providers: [
+        {
+          provide: PublishService,
+          useValue: {
+            publish: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     service = module.get<PublishService>(PublishService);

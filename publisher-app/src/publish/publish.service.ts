@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
-import { SubscriberService } from 'src/subscriber/subscriber.service';
+import { SubscriberService } from '../subscriber/subscriber.service';
 
 @Injectable()
 export class PublishService {
   constructor(private readonly subscriberService: SubscriberService) {}
 
   async publish(topic: string, publishPayload: { [key: string]: any }) {
+    // get all subscribers
     const subscribers = await this.subscriberService.findAll({ topic });
 
     const publishArray = [];

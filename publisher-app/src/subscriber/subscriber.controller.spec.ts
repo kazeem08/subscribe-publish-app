@@ -14,9 +14,6 @@ describe('SubscriberController', () => {
           provide: SubscriberService,
           useValue: {
             create: jest.fn(),
-            getActiveSubscriber: jest.fn(),
-            findAll: jest.fn(),
-            getTopic: jest.fn(),
           },
         },
       ],

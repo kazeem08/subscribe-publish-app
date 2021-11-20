@@ -8,7 +8,7 @@ export class PublishController {
 
   @Post('/:topic')
   async publish(
-    @Res() res: Response,
+    @Res() res: any,
     @Param('topic') topic: string,
     @Body() payload: { [key: string]: any },
   ) {
