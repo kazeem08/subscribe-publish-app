@@ -50,6 +50,9 @@ This consist of two servers:
 
 ```bash
 git clone https://github.com/kazeem08/subscribe-publish-app.git
+```
+
+```
 cd subscribe-publish-app
 rm -rf .git
 ```
