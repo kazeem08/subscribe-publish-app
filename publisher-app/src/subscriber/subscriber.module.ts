@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SubscriberService } from './subscriber.service';
-import { SusbcribeController } from './subscriber.controller';
+import { SubscriberController } from './subscriber.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Subscriber, SubscriberSchema } from './schema/subscriber.schema';
 
@@ -10,7 +10,7 @@ import { Subscriber, SubscriberSchema } from './schema/subscriber.schema';
       { name: Subscriber.name, schema: SubscriberSchema },
     ]),
   ],
-  controllers: [SusbcribeController],
+  controllers: [SubscriberController],
   providers: [SubscriberService],
   exports: [SubscriberService],
 })

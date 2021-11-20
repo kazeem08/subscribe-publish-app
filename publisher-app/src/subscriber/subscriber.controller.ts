@@ -11,7 +11,7 @@ import { CreateSusbcriberDto } from './dto/create-subscriber.dto';
 import { SubscribeDTO } from './dto/subscriber.dto';
 
 @Controller('subscribe')
-export class SusbcribeController {
+export class SubscriberController {
   constructor(private readonly subscriberService: SubscriberService) {}
 
   @Post('/:topic')
@@ -19,6 +19,7 @@ export class SusbcribeController {
     @Param('topic') topic: string,
     @Body() createSusbcribeDto: CreateSusbcriberDto,
   ) {
+    // validate request body
     if (!createSusbcribeDto.url) {
       throw new BadRequestException('url is required');
     }

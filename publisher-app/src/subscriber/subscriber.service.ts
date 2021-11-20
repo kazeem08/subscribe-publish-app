@@ -15,6 +15,8 @@ export class SubscriberService {
     createSusbcribeDto: CreateSusbcriberDto,
     topic: string,
   ): Promise<SubscriberDocument> {
+    topic = topic.trim(); // trim to remove spaces
+
     // check if subscriber is alread subscribed to the topic
     const isSubscribed = await this.getActiveSubscriber(
       createSusbcribeDto.url,
@@ -35,5 +37,14 @@ export class SubscriberService {
   // get active subscriber
   getActiveSubscriber(url: string, topic: string) {
     return this.model.findOne({ url, topic });
+  }
+
+  async findAll(filter: { [key: string]: any }): Promise<SubscriberDocument[]> {
+    return this.model.find(filter);
+  }
+
+  // get active subscriber
+  getTopic(topic: string) {
+    return this.model.findOne({ topic });
   }
 }
