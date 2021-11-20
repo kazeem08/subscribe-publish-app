@@ -62,6 +62,11 @@ rm -rf .git
 
 #### Install dependencies:
 
+#give permission to execute file 
+```bash
+chmod u+x dependencies.sh
+```
+
 ```bash
 ./dependencies.sh
 ```
@@ -73,6 +78,10 @@ rm -rf .git
 ## Running the application
 
 The command below starts the two applications listening on port 8000 and 9000
+
+```bash
+chmod u+x dependencies.sh
+```
 
 ```bash
 ./start-server.sh
